@@ -21,4 +21,3 @@ get '/' do
     ].sample
   erb :index
 end
-
