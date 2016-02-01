@@ -23,7 +23,8 @@ get '/' do
     "小説ってどうやって書くんですか…？","東京テレポートですの！","才能も超えて上昇する！","コーヒー（隠語）をキメた。",
     "夜は〜〜〜〜","pic.twitter.com/wXtXMauNJy","pic.twitter.com/vxSlDCdvj3","pic.twitter.com/UWeElIBtY9","pic.twitter.com/jedHpl9Dxy","pic.twitter.com/GtP8uN04NH",
     "ハナヤマタ4話2クールおじさんだ","ストライクウィッチーズ2期6話8クールおじさんだ","不器用じゃなきゃ恋はできない","大量の涎でコーティングされた厚めの舌",
-    "いつになったらクリエイティブするの？","ねむねむにゃんこっ！！"
+    "いつになったらクリエイティブするの？","ねむねむにゃんこっ！！",
+    "https://t.co/nwciKcO5x1"
     ].sample
   erb :index
 end
