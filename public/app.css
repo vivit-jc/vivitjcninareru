@@ -6,3 +6,14 @@
     margin: 0 auto;
     text-align: center;
 }
+
+.main div.nareru-text {
+    padding: 0.5em 1em;
+    margin: 2em auto;
+    border-left:  double 7px #4ec4d3;/*左線*/
+    border-right: double 7px #4ec4d3;/*右線*/
+}
+.main div.nareru-text p {
+    margin: 0;
+    padding: 0;
+}
