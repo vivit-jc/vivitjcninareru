@@ -47,6 +47,14 @@ get '/' do
   erb :index
 end
 
+get '/gacha' do
+  @text = []
+  10.times do 
+    @text.push $readable_text.sample
+  end
+  erb :gacha
+end
+
 get '/api/nareru' do
   case params['type']
   when "readable" then
