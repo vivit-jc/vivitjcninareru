@@ -1,9 +1,4 @@
-# encoding: utf-8
-
-require 'rubygems'
-require 'sinatra'
-
-$readable_text = [
+{ "readableText": [
   "違法改造されたドラゴンガン","ぱぁーっと　ぱぁーっと","ご満足いただけましたか？","ゲーム作りたい","優しいだけじゃ困るからな","かりんとうが切れた",
   "ここのプリクリ様かわいい","俺自身が井口裕香になることだ","いぐちゆかです！","俺自身がYui Oguraになることだ","あたりまえアシュリーだもん！",
   "ああ＾〜Yui Oguraになるぅ＾〜","小倉唯は私の母になってくれるかもしれなかった女性だ","ﾃﾚﾚｰﾚﾃｰﾚﾚﾚﾚｰﾚｰﾃﾚﾚｰﾚﾃｰﾚﾚﾚﾚｱｲﾜｽﾞｻﾞﾜﾝﾜｰﾝﾜﾝﾜｰﾝｱｯｱｯｱｱｲﾜｽﾞｻﾞﾜｰﾝｱｱｱｯｱｯｱｯｱｱｲﾜｽﾞｻﾞﾜｰﾝﾜｰﾝﾜｰﾝﾜｧﾜｧﾜｧﾄﾞｩｰﾝ",
@@ -33,37 +28,9 @@ $readable_text = [
   "神戸牛","ものすごい違法建築だね！","ゲーム性がある","新刊はありませんじゃあないんだよ","お姉ちゃんが絶対守ってあげるからね",
   "脩は男の子だもん 頑張れるよね","熱々おでん強要お姉ちゃん","半分イカれた100歳の男","突然現れた謎の美女","おにいたま","異常行動はやめましょう",
   "火、水、食料、基地","最近インポがしんどいという話をよく聞くようになってきたので、なるべくインポに優しくあろうと思っています"
-]
-$visual_text = [
+], "visualText": [
   "🍕","ლ三ლ(╹◡╹ლ三ლ)","🍣",
   "https://www.youtube.com/watch?v=EixQ_Owd0fU",
   "pic.twitter.com/wXtXMauNJy","pic.twitter.com/vxSlDCdvj3","pic.twitter.com/UWeElIBtY9","pic.twitter.com/jedHpl9Dxy","pic.twitter.com/GtP8uN04NH",
   "https://t.co/nwciKcO5x1"
-]
-$common_text = ["ゲーム作りたい","ゲーム作りたい","ゲーム作りたい","ゲーム作りたい","ゲーム作りたい","ゲーム作りたい","ゲーム作りたい","ゲーム作りたい","ゲーム作りたい"]
-
-get '/' do
-  @text = ($readable_text + $visual_text + $common_text).sample
-  erb :index
-end
-
-get '/gacha' do
-  @text = []
-  10.times do 
-    @text.push $readable_text.sample
-  end
-  @num = $readable_text.size
-  erb :gacha
-end
-
-get '/api/nareru' do
-  case params['type']
-  when "readable" then
-    text = $readable_text
-  when "visual" then
-    text = $visual_text
-  else
-    text = $readable_text + $visual_text
-  end
-  text.sample
-end
+], "commonText": ["ゲーム作りたい","ゲーム作りたい","ゲーム作りたい","ゲーム作りたい","ゲーム作りたい","ゲーム作りたい","ゲーム作りたい","ゲーム作りたい","ゲーム作りたい"]}

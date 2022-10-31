@@ -1,16 +1,59 @@
-<html>
+<!doctype html>
+<html lang="ja">
 <head>
 <title>vivit_jcになれるボタン</title>
 <meta charset=utf-8 />
-<link href="app.css" rel="stylesheet">
+<link href="/assets/app.css" rel="stylesheet">
+<script>
+(function(){
+  const api = '/data/tweets.json'
+  function fetchTweets (callback) {
+    const xhr = new XMLHttpRequest()
+    xhr.open('GET', api, true)
+    xhr.onload = function () {
+      if (xhr.readyState !== 4) {
+        return
+      }
+      if (xhr.status !== 200) {
+        console.error(xhr.statusText)
+        return
+      }
+      const tweets = JSON.parse(xhr.responseText)
+      callback(tweets)
+    }
+    xhr.onerror = function () {
+      console.error(xhr.statusText)
+    }
+    xhr.send(null)
+  }
+  function sampleTweet (tweets) {
+    const { readableText, visualText, commonText } = tweets
+    const total = [
+      ...readableText,
+      ...visualText,
+      ...commonText,
+    ]
+    return total[Math.floor(Math.random() * total.length)]
+  }
+  document.addEventListener('DOMContentLoaded', function() {
+    const nareruText = document.getElementById('nareru-text')
+    const shareButton = document.getElementById('twitter-share-button')
+    fetchTweets((tweets) => {
+      const tweet = sampleTweet(tweets)
+      nareruText.innerText = tweet
+      shareButton.dataset.text = tweet
+    })
+  })
+})()
+</script>
 </head>
 <body>
 
 <div class="main">
 <div>
 <h1>vivit_jcになれるボタン</h1>
-<div class="nareru-text"><p><%= @text %></p></div>
-<a href="https://twitter.com/share" class="twitter-share-button" data-text="<%= @text %>" data-size="large">Tweet</a>
+<div class="nareru-text"><p id="nareru-text"></p></div>
+<a id="twitter-share-button" href="https://twitter.com/share" class="twitter-share-button" data-size="large">Tweet</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 <br><br><br>
 ※更新するたびに内容が変わります。<br><br>
