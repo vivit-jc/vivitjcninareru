@@ -1,9 +1,9 @@
 {
-  "name": "nareru.aotak.me",
+  "name": "vivitjsninareru",
   "version": "2.0.0",
   "description": "website",
   "main": "dist/index.js",
-  "author": "Taku Aoi <aoitaku@lunatlazur.com>",
+  "author": "vivit-jc <kazyu.vanilla@gmail.com>",
   "license": "zlib",
   "private": true,
   "type": "module",

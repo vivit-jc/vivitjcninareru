@@ -1,4 +1,4 @@
 vivit_jcになれるボタン
 ----
 
-http://vivitjcninareru.herokuapp.com/
+https://vivitjcninareru.netlify.app
