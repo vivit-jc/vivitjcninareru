@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<title>vivit_jcになれるボタン</title>
+<meta charset=utf-8 />
+<link href="app.css" rel="stylesheet">
+<script>
+(function(){
+  const api = '/data/tweets.json'
+  function fetchTweets (callback) {
+    const xhr = new XMLHttpRequest()
+    xhr.open('GET', api, true)
+    xhr.onload = function () {
+      if (xhr.readyState !== 4) {
+        return
+      }
+      if (xhr.status !== 200) {
+        console.error(xhr.statusText)
+        return
+      }
+      const tweets = JSON.parse(xhr.responseText)
+      callback(tweets)
+    }
+    xhr.onerror = function () {
+      console.error(xhr.statusText)
+    }
+    xhr.send(null)
+  }
+  function shuffleTweet (tweets) {
+    const { readableText, visualText, commonText } = tweets
+    return tweets.sort(() => Math.random() - 0.5)
+  }
+  document.addEventListener('DOMContentLoaded', function() {
+    const gachaTotal = document.getElementById('gacha-total')
+    const gachaItems = document.getElementById('gacha-items')
+    fetchTweets((tweets) => {
+      const { readableText, visualText, commonText } = tweets
+      const total = [
+        ...readableText,
+        ...visualText,
+        ...commonText,
+      ]
+      const sampled = shuffleTweet(total).slice(0, 10)
+      gachaTotal.innerText = total.length
+      for (const tweet of sampled) {
+        const div = document.createElement('div')
+        const p = document.createElement('p')
+        p.innerText = tweet
+        div.appendChild(p)
+        gachaItems.appendChild(div)
+      }
+    })
+  })
+})()
+</script>
+</head>
+<body>
+
+<div class="main">
+<div>
+<h1>vivit_jcになれるボタン 10連ガチャ</h1>
+<p>全<span id="gacha-total"></span>種</p>
+<div id="gacha-items">
+</div>
+</div>
+</div>
+</body>
+</html>
